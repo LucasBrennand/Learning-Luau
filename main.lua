@@ -79,3 +79,35 @@ while number < 5 do
 	print(number)
 	number+=1
 end
+
+-- Events
+game.Players.PlayerAdded:Connect(function(player)
+	print("A new player has joined")
+	print(player)
+end)
+
+
+local function playerAdd(player)
+	print("A new player has joined")
+	print(player)
+end
+
+game.Players.PlayerAdded:Connect(playerAdd)
+
+
+local touchPart = game.Workspace.TouchPart
+local partIsTouched = false
+
+touchPart.Touched:Connect(function(otherPart)
+	if (partIsTouched == false) then
+		partIsTouched = true
+		touchPart.Material = "Leather"
+		touchPart.Color = Color3.fromHex("#a51279")
+	print(otherPart.Name)
+	
+	task.wait(2)
+	partIsTouched = false
+		touchPart.Color = Color3.fromHex("#a51230")
+	end
+end)
+
